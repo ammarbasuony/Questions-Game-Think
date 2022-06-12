@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+// Server
+import getQuestions from "../api/getQuestions";
 
 const Questions = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.playerReducer);
+
+  const [questions, setQuestions] = useState([]);
+
+  const fetchQuestions = async () => {
+    const data = await getQuestions(10, state.category, state.difficulty);
+    setQuestions(data);
+  };
+
+  useEffect(() => {
+    if (!state.player_name) {
+      navigate("/");
+    }
+
+    fetchQuestions();
+  }, []);
+
   return (
     <div className="w-2/3">
       <div className="font-poppins inline-block text-center text-secondary font-bold">

@@ -19,6 +19,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.Toastify__toast-body {
+  font-family: "Poppins";
+}
+
 .column-1-3 {
   flex-basis: 32.6%;
 }
