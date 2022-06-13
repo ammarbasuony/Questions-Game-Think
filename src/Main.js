@@ -16,8 +16,8 @@ import Score from "./pages/Score";
 const Main = () => {
   return (
     <div className="mx-5 flex items-center justify-center h-screen relative">
-      <AppTitle />
       <BrowserRouter>
+        <AppTitle />
         <Routes>
           <Route path="/" element={<WelcomeScreen />} />
           <Route path="categories" element={<Categories />} />

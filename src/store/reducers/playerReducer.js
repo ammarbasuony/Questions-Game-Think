@@ -3,6 +3,7 @@ import {
   SET_DIFFICULTY,
   SET_SESSION_TOKEN,
   SET_PLAYER_CATEGORY,
+  START_NEW_GAME,
 } from "../types";
 
 const initialState = {
@@ -36,6 +37,9 @@ const playerReducer = (state = initialState, action) => {
         category: action.payload,
         selectedCategories: [...state.selectedCategories, action.payload],
       };
+
+    case START_NEW_GAME:
+      return initialState;
     default:
       return state;
   }

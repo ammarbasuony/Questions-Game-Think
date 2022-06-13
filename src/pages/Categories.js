@@ -7,12 +7,13 @@ import { useSelector, useDispatch } from "react-redux";
 import getCategories from "../api/getCategories";
 
 // Actions
-import { addPlayerCategory } from "../store/actions";
+import { addPlayerCategory, addResetState } from "../store/actions";
 
 const Categories = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.playerReducer);
+  const questionsData = useSelector((state) => state.questionsReducer);
 
   const [categories, setCategories] = useState([]);
   const [categoryId, setCategoryId] = useState("");
@@ -30,9 +31,16 @@ const Categories = () => {
     fetchCategories();
   }, []);
 
+  useEffect(() => {
+    if (questionsData.number_of_categories === 3) {
+      navigate("/score");
+    }
+  }, [questionsData.number_of_categories]);
+
   const startGame = () => {
     if (!categoryId) return toast.error("Please select a category");
     dispatch(addPlayerCategory(categoryId));
+    dispatch(addResetState());
     navigate("/questions");
   };
 
@@ -43,13 +51,13 @@ const Categories = () => {
       </h1>
       <div
         className={`${
-          categoryId === 0 ? "bg-primary" : "bg-slate-700"
+          categoryId === -1 ? "bg-primary" : "bg-slate-700"
         } text-white font-poppins rounded-md py-4 px-5 cursor-pointer mt-5 text-center mb-1 flex items-center justify-center`}
         onClick={() => {
-          if (categoryId === 0) {
+          if (categoryId === -1) {
             setCategoryId("");
           } else {
-            setCategoryId(0);
+            setCategoryId(-1);
           }
         }}
       >

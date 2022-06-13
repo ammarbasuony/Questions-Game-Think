@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 // Actions
@@ -16,6 +16,7 @@ import getToken from "../api/getToken";
 const WelcomeScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const state = useSelector((state) => state.playerReducer);
   const [playerName, setPlayerName] = useState("");
   const [difficultyLevel, setDifficultyLevel] = useState("");
 
@@ -48,6 +49,12 @@ const WelcomeScreen = () => {
       navigate("categories");
     }
   };
+
+  useEffect(() => {
+    if (state.player_name) {
+      navigate("categories");
+    }
+  }, []);
 
   return (
     <div className="w-1/3">
