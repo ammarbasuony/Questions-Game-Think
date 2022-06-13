@@ -1,6 +1,8 @@
 # Questions-Game-Think
 
-Player will enter their name, select a difficulty then select a questions category or pick random. Question are of two types multiple choose or true/false questions. Player can answer and move to next one or skip the question, if the question time is up the question is auto skipped. After N number of questions player should be directed to select a new category with the previous categories disabled. After playing through M number of categories the game is complete and the player is directed to the score screen
+Player will enter their name, select a difficulty then select a questions category or pick random. Question are of two types multiple choose or true/false questions. Player can answer and move to next one or skip the question, if the question time is up the question is auto skipped. After N number of questions player should be directed to select a new category with the previous categories disabled. After playing through M number of categories the game is complete and the player is directed to the score screen.
+
+Live Demo: [Preview Link](https://ammaryaser.com/Practice/Questions-Game-Think/)
 
 ## Available Scripts
 
